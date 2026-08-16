@@ -1,4 +1,4 @@
-# 🏃 FUN WALK & RUN JULY 2026 - Vibrant Light Edition
+# 🏃 FUN WALK & RUN  - Vibrant Light Edition
 
 Aplikasi pendaftaran dan pelaporan aktivitas Fun Walk & Run
 
