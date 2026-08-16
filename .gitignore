@@ -1,0 +1,263 @@
+# ========================================
+# FILE DAN FOLDER SISTEM
+# ========================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+*.swp
+*.swo
+*.swn
+*.swm
+
+# ========================================
+# EDITOR DAN IDE
+# ========================================
+
+# VS Code
+.vscode/
+*.code-workspace
+.vscode-test/
+.vscode/extensions.json
+.vscode/settings.json
+
+# IntelliJ IDEA / WebStorm / PhpStorm
+.idea/
+*.iml
+*.ipr
+*.iws
+.idea_modules/
+out/
+target/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+*.sublime-settings
+
+# Vim
+*.swp
+*.swo
+*.un~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+
+# ========================================
+# FILE DAN FOLDER SEMENTARA
+# ========================================
+
+# Temporary files
+*.log
+*.tmp
+*.temp
+*.cache
+*.pid
+*.seed
+*.pid.lock
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+*.rej
+
+# ========================================
+# NODE.JS DAN JAVASCRIPT (jika ada)
+# ========================================
+
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build output
+dist/
+build/
+out/
+*.min.js
+*.min.css
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.test
+
+# ========================================
+# GIT
+# ========================================
+
+# Git
+.git/
+.gitignore
+.gitattributes
+.gitmodules
+
+# ========================================
+# GOOGLE APPS SCRIPT (khusus untuk GAS)
+# ========================================
+
+# GAS deployment files
+.clasp.json
+.claspignore
+*.gsheet
+*.gslides
+*.gdoc
+*.gform
+
+# Google Drive file streams
+.drive/
+
+# ========================================
+# BAHASA PEMROGRAMAN LAIN
+# ========================================
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+.pytest_cache/
+.coverage
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+target/
+build/
+
+# PHP
+*.log
+*.sql
+*.sqlite
+composer.lock
+vendor/
+
+# Ruby
+*.gem
+*.rbc
+/.config
+/.ruby-version
+/.ruby-gemset
+Gemfile.lock
+
+# ========================================
+# FILE DAN FOLDER PROYEK SPESIFIK
+# ========================================
+
+# Screenshots dan file besar
+screenshots/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.mp4
+*.mov
+
+# PDF dan dokumen
+*.pdf
+*.doc
+*.docx
+*.xls
+*.xlsx
+
+# Zip dan arsip
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+
+# ========================================
+# KONFIGURASI PERSONAL
+# ========================================
+
+# Local configuration
+config.local.js
+config.local.json
+*.local.js
+*.local.json
+
+# Credentials
+credentials.json
+service-account.json
+*.key
+*.pem
+*.p12
+
+# ========================================
+# DATABASE
+# ========================================
+
+*.db
+*.sqlite
+*.sqlite3
+*.mysql
+*.pgsql
+
+# ========================================
+# DEPLOYMENT
+# ========================================
+
+# Deployment files
+deploy/
+deployment/
+*.deploy
+*.deployment
+
+# ========================================
+# LAINNYA
+# ========================================
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio
+.vs/
+*.vspscc
+*.vssscc
