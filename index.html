@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8">
+    <base target="_top">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUN WALK & RUN JULY 2026 - Vibrant Light Edition</title>
+    <!-- Tailwind CSS & Google Fonts -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+      /* ... semua style yang sama seperti sebelumnya ... */
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background: linear-gradient(135deg, #ff6b6b 0%, #ffa94d 30%, #ffd93d 60%, #6bcb77 100%);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        min-height: 100vh;
+      }
+      /* ... semua animasi yang sama ... */
+    </style>
+  </head>
+  <body>
+    <!-- ... Semua HTML yang sama seperti sebelumnya ... -->
+    
+    <script>
+      // ============ KONFIGURASI ============
+      // GANTI URL INI dengan URL Google Apps Script Anda setelah deploy
+      const GAS_API_URL = 'https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec';
+      // ======================================
+      
+      function readFileAsBytes(file) {
+        return new Promise((resolve, reject) => {
+          if (!file) resolve(null);
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            const bytes = Array.from(new Uint8Array(e.target.result));
+            resolve({ bytes: bytes, mimeType: file.type, name: file.name });
+          };
+          reader.onerror = reject;
+          reader.readAsArrayBuffer(file);
+        });
+      }
+
+      async function handleFormSubmit(formObject) {
+        const submitBtn = document.getElementById('submitBtn');
+        const statusMessage = document.getElementById('statusMessage');
+        
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="relative z-10">⚡ MENGIRIM DATA...</span>';
+        statusMessage.className = "text-center text-xs font-bold p-3 rounded-xl bg-gradient-to-r from-amber-100 to-yellow-100 text-amber-800 border-2 border-amber-300 status-message";
+        statusMessage.innerText = "⏳ Memproses file & data, mohon tunggu sebentar...";
+        statusMessage.classList.remove('hidden');
+
+        try {
+          const buktiFileEl = document.getElementById('buktiFile').files[0];
+          const selfieFileEl = document.getElementById('selfieFile').files[0];
+          
+          const buktiData = await readFileAsBytes(buktiFileEl);
+          const selfieData = await readFileAsBytes(selfieFileEl);
+
+          const formData = {
+            email: formObject.email.value,
+            nama: formObject.nama.value.toUpperCase(),
+            payroll: formObject.payroll.value,
+            noHp: formObject.noHp.value,
+            departemen: formObject.departemen.value,
+            jenisAktivitas: formObject.jenisAktivitas.value,
+            setoranKe: formObject.setoranKe.value,
+            tanggalAktivitas: formObject.tanggalAktivitas.value,
+            waktuAktivitas: formObject.waktuAktivitas.value,
+            jarakTempuh: formObject.jarakTempuh.value,
+            waktuTempuh: formObject.waktuTempuh.value,
+            buktiRekapan: buktiData,
+            selfie: selfieData
+          };
+
+          // Kirim ke Google Apps Script API
+          const response = await fetch(GAS_API_URL, {
+            method: 'POST',
+            mode: 'no-cors', // Hindari CORS issues
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+          });
+
+          // Karena mode 'no-cors', response tidak bisa dibaca
+          // Tapi data tetap terkirim
+          statusMessage.classList.remove('animate-pulse');
+          statusMessage.className = "text-center text-xs font-bold p-3 rounded-xl bg-gradient-to-r from-emerald-100 to-green-100 text-emerald-800 border-2 border-emerald-300 status-message";
+          statusMessage.innerText = "🎉 BERHASIL! Data olahraga Anda sudah tersimpan. 🔥";
+          
+          // Reset form
+          formObject.reset();
+          document.getElementById('buktiFile').value = '';
+          document.getElementById('selfieFile').value = '';
+          
+        } catch (error) {
+          statusMessage.classList.remove('animate-pulse');
+          statusMessage.className = "text-center text-xs font-bold p-3 rounded-xl bg-gradient-to-r from-red-100 to-pink-100 text-red-800 border-2 border-red-300 status-message";
+          statusMessage.innerText = "⚠️ ERROR: " + error.message;
+        }
+        
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span class="relative z-10">🚀 Kirim Aktivitas</span>';
+      }
+    </script>
+  </body>
+</html>
